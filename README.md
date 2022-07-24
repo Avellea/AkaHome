@@ -18,7 +18,7 @@ Home automation and health tracking.
 # Demo
 
 ![Demo](assets/README/file-0.png)
-<img src="assets/README/file-1.png" width=10%>
+<img src="assets/README/file-1.png" width=25%>
 
 # Advantages
 
