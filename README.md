@@ -18,6 +18,7 @@ Home automation and health tracking.
 # Demo
 
 ![Demo](assets/README/file-0.png)
+<img src="assets/README/file-1.png" height=10%>
 
 # Advantages
 
@@ -35,7 +36,7 @@ $ bundler install
 # Deployment
 
 ```
-$ sudo ruby ./start.sh <ip> <port>
+$ sudo ruby ./start.rb <ip> <port>
 ```
 
 NOTE: `sudo` is required for Raspberry Pi functions. **DO NOT OPEN THIS TO THE WORLD!**
