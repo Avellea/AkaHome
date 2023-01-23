@@ -1,5 +1,2 @@
 Gemfile.lock
-assets/water.csv
-RunNHide.exe
-start.bat
-AkaHome.lnk
+.env
