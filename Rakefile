@@ -25,6 +25,12 @@ task :config do
     configure_mail()
 end
 
+desc "Run"
+task :run do
+    puts("Running AkaHome...")
+    system("ruby lib/main.rb")
+end
+
 def configure_port
     puts("What port would you like to run AkaHome on? (Default: 3000)")
     port = STDIN.gets.chomp
@@ -53,7 +59,17 @@ def configure_mail
         configure_mail()
     end
     File.open(".env", "a") do |f|
-        f.write("RECIPIENT=#{recipient}")
+        f.write("RECIPIENT=#{recipient}\n")
+        f.close()
+    end
+    puts("What is the password for #{email}?")
+    password = STDIN.gets.chomp
+    if password == "\n"
+        puts("You must enter a password.")
+        configure_mail()
+    end
+    File.open(".env", "a") do |f|
+        f.write("PASSWORD=#{password}")
         f.close()
     end
 end
