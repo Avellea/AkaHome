@@ -1,22 +1,26 @@
 #!/usr/bin/ruby
 
+require 'fileutils'
 require 'dotenv/load'
 require 'logger'
-require 'rainbow'
 require_relative 'util/motd'
 
 def main()
     Dotenv.load('.env')
-    # puts(print_motd())
     log = Logger.new(STDOUT)
-    log.debug("Debug message")
-    log.info("Info message")
-    log.warn("Warn message")
-    log.error("Error message")
-    log.fatal("Fatal message")
-    log.unknown("Unknown message")
 
-    puts(Rainbow("Hello, world!").red)
+    puts(print_motd())
+    puts "=" * 47
+
+    begin
+        require_relative './web/init.rb'
+        puts("Starting server on #{ENV['BIND_IP']}:#{ENV['PORT']}")
+        AkaHomeApp.run!(:host => ENV['BIND_IP'], :port => ENV['PORT'])
+    rescue Exception => e
+        log.error("Cannot start server on #{ENV['BIND_IP']}:#{ENV['PORT']}")
+        log.error(e.message  + "\n\n")
+        log.error(e.backtrace.inspect)
+    end
 
 end
 
